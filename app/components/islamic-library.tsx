@@ -84,10 +84,10 @@ export default function IslamicLibrary({ mode }: { mode: "quran" | "hadith" | "s
         {currentSurah && <div className="surah-heading"><h3>{currentSurah.name}</h3><p>{currentSurah.englishName} · {currentSurah.englishNameTranslation} · {currentSurah.revelationType === "Meccan" ? (arabic ? "مكية" : "Mecquoise") : (arabic ? "مدنية" : "Médinoise")} · {currentSurah.numberOfAyahs} {arabic ? "آية" : "versets"}</p></div>}
         {loading && <p className="library-status">{arabic ? "جار تحميل الآيات..." : "Chargement des versets…"}</p>}
         {error && <p className="library-error" role="alert">{error}</p>}
-        {!loading && ayahs.length > 0 && <div className="audio-bar"><span>{arabic ? "تلاوة مشاري العفاسي" : "Récitation — Mishary Alafasy"}</span><audio controls preload="none" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} src={ayahs[0]?.audio}><track kind="captions" /></audio></div>}
         <div className="ayah-list" dir="rtl">{ayahs.map(a => <article className="ayah-card" key={a.numberInSurah}>
           <span className="ayah-number">{a.numberInSurah}</span><p className="ayah-arabic">{a.text}</p>
           <p className="ayah-translation" dir={arabic ? "rtl" : "ltr"}>{a.translation?.text}</p>
+          {a.audio && <audio className="ayah-audio" controls preload="none" src={a.audio} aria-label={(arabic ? "استماع إلى الآية " : "Écouter le verset ") + a.numberInSurah}><track kind="captions" /></audio>}
         </article>)}</div>
         <p className="source-note">{arabic ? "المصدر: AlQuran Cloud · رواية حفص · الترجمة الفرنسية لمعاني القرآن لمحمد حميد الله." : "Source : AlQuran Cloud · lecture Hafs · traduction française du sens par Muhammad Hamidullah. Une traduction est une interprétation du sens, et non le texte arabe du Coran."} <a href="https://alquran.cloud/" target="_blank" rel="noreferrer">Documentation et source ↗</a></p>
       </>}
