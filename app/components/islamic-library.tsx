@@ -28,7 +28,6 @@ export default function IslamicLibrary({ mode }: { mode: "quran" | "hadith" | "s
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [searching, setSearching] = useState(false);
-  const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
     if (mode !== "quran" && mode !== "search") return;
@@ -56,6 +55,7 @@ export default function IslamicLibrary({ mode }: { mode: "quran" | "hadith" | "s
 
   const filteredHadiths = useMemo(() => hadiths.filter(h => (h.arabic + " " + h.french + " " + h.source + " " + h.theme).toLowerCase().includes(query.toLowerCase())), [query]);
   const currentSurah = surahs.find(s => s.number === surahNumber);
+  function toggleArabic() { const next = !arabic; setArabic(next); document.documentElement.lang = next ? "ar" : "fr"; document.documentElement.dir = next ? "rtl" : "ltr"; document.body.classList.toggle("arabic-mode", next); }
 
   async function searchAll() {
     if (!query.trim()) return;
@@ -72,7 +72,7 @@ export default function IslamicLibrary({ mode }: { mode: "quran" | "hadith" | "s
     <section className="library-panel">
       <div className="library-topline">
         <div><p className="eyebrow">{arabic ? "مكتبة علمية موثقة" : "Bibliothèque documentée"}</p><h2>{mode === "quran" ? (arabic ? "القرآن الكريم" : "Le Coran, sourate par sourate") : mode === "hadith" ? (arabic ? "الأحاديث الصحيحة" : "Hadiths authentiques") : (arabic ? "البحث في المصادر" : "Recherche documentaire")}</h2></div>
-        <button className="language-button" onClick={() => setArabic(v => !v)}>{arabic ? "Français" : "العربية"}</button>
+        <button className="language-button" onClick={toggleArabic}>{arabic ? "Français" : "العربية"}</button>
       </div>
 
       {mode === "quran" && <>
@@ -87,7 +87,7 @@ export default function IslamicLibrary({ mode }: { mode: "quran" | "hadith" | "s
         <div className="ayah-list" dir="rtl">{ayahs.map(a => <article className="ayah-card" key={a.numberInSurah}>
           <span className="ayah-number">{a.numberInSurah}</span><p className="ayah-arabic">{a.text}</p>
           <p className="ayah-translation" dir={arabic ? "rtl" : "ltr"}>{a.translation?.text}</p>
-          {a.audio && <audio className="ayah-audio" controls preload="none" src={a.audio} aria-label={(arabic ? "استماع إلى الآية " : "Écouter le verset ") + a.numberInSurah}><track kind="captions" /></audio>}
+          {a.audio && <audio className="ayah-audio" controls preload="none" src={a.audio} aria-label={(arabic ? "استماع إلى الآية " : "Écouter le verset ") + a.numberInSurah}></audio>}
         </article>)}</div>
         <p className="source-note">{arabic ? "المصدر: AlQuran Cloud · رواية حفص · الترجمة الفرنسية لمعاني القرآن لمحمد حميد الله." : "Source : AlQuran Cloud · lecture Hafs · traduction française du sens par Muhammad Hamidullah. Une traduction est une interprétation du sens, et non le texte arabe du Coran."} <a href="https://alquran.cloud/" target="_blank" rel="noreferrer">Documentation et source ↗</a></p>
       </>}
