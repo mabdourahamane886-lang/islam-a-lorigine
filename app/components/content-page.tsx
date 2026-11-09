@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import IslamicLibrary from "./islamic-library";
 
 const pages: Record<string, { title: string; arabic: string; intro: string; items: { title: string; text: string }[] }> = {
   coran: {
@@ -62,6 +63,8 @@ const pages: Record<string, { title: string; arabic: string; intro: string; item
   }
 };
 
+const arabicPages = {"coran":{"intro":"مساحة لقراءة كتاب الله وفهمه ودراسته باحترام ومنهجية ومراجع موثوقة.","titles":["قراءة السور","الترجمات والتفاسير","الاستماع والحفظ"],"texts":["التعرّف على السور ومتابعة آياتها مع أرقامها.","عرض ترجمات معاني القرآن مع ذكر المترجمين ومراجع التفسير.","موارد صوتية وتكرار الآيات ونصائح لتنظيم الحفظ والمراجعة."]},"hadiths":{"intro":"دراسة السنة النبوية مع التمييز بين نص الحديث ومصدره ورقمه ودرجة صحته.","titles":["كتب الحديث","مراجع قابلة للتحقق","فهم الحديث"],"texts":["التعريف بصحيح البخاري وصحيح مسلم وغيرها من كتب الحديث المعتمدة.","ذكر الكتاب والباب ورقم الحديث والطبعة والحكم الحديثي عند توفره.","السياق والمفردات والشروح المنقولة عن مراجع محددة."]},"sira":{"intro":"رحلة زمنية في حياة رسول الله ﷺ وفي الظروف التاريخية لعصره.","titles":["العهد المكي","الهجرة والمدينة","مصادر السيرة"],"texts":["أحوال الجزيرة العربية قبل الوحي وبداية الدعوة وأوائل المسلمين.","الهجرة وبناء المجتمع الإسلامي وأحداث العهد المدني.","عرض الروايات مع ذكر مصادرها والتنبيه إلى الاختلافات التاريخية."]},"sciences-islamiques":{"intro":"موارد تعليمية للتعرّف على العلوم الإسلامية ومناهج دراستها.","titles":["التفسير وعلوم القرآن","الفقه والعقيدة","اللغة العربية والتجويد"],"texts":["أصول التفسير والمفردات القرآنية والعلوم المتعلقة بالوحي.","المبادئ الأساسية والمذاهب الفقهية وعرض الاختلاف بأدب واحترام.","النحو والصرف والقراءة وأحكام تلاوة القرآن."]},"lieux-merveilles":{"intro":"رحلة وثائقية عبر الأماكن المقدسة والمساجد التاريخية والمخطوطات وتراث الحضارة الإسلامية.","titles":["مكة المكرمة","المدينة المنورة","القدس والمسجد الأقصى","أغاديس — النيجر","الأندلس — إسبانيا","المكتبات والمخطوطات"],"texts":["الكعبة والمسجد الحرام ومكانتهما في مناسك الحج والعمرة.","المسجد النبوي والمعالم الرئيسية للعهد المدني.","المسجد الأقصى والتراث التاريخي للبلدة القديمة في القدس.","الجامع الكبير في أغاديس ومئذنته الطينية، من أبرز معالم العمارة في منطقة الساحل.","قصر الحمراء في غرناطة وقرطبة والآثار الفنية والعلمية والمعمارية للحضارة الإسلامية في الأندلس.","مراكز العلم والمكتبات التاريخية وانتقال المعارف والعلوم."]},"a-propos":{"intro":"الإسلام في الأصل مشروع تعليمي يهدف إلى نشر المعارف الإسلامية والتاريخية والثقافية.","titles":["رسالتنا","منهجنا","اتصل بنا"],"texts":["تيسير الوصول إلى المصادر وتشجيع التعلم ونقل المعرفة بمسؤولية.","تحديد المصادر والتحقق من المراجع والتمييز بين النصوص الشرعية والروايات التاريخية.","نيامي، النيجر · الهاتف: +227 88 37 61 33 · يمكن الانضمام إلى قناة واتساب عبر الزر أدناه."]}};
+
 const photos = [
   { title: "La Mosquée sacrée — La Mecque", place: "Makkah, Arabie saoudite", src: "https://upload.wikimedia.org/wikipedia/commons/4/42/Kaaba%2C_Masjid_Al_Haram%2C_Mecca.jpg", credit: "Shahin Olakara — CC BY 2.0", href: "https://commons.wikimedia.org/wiki/File:Kaaba,_Masjid_Al_Haram,_Mecca.jpg" },
   { title: "La Mosquée du Prophète ﷺ", place: "Médine, Arabie saoudite", src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/MasjidNabawi.jpg/1280px-MasjidNabawi.jpg", credit: "Wurzelgnohm — CC0", href: "https://commons.wikimedia.org/wiki/File:MasjidNabawi.jpg" },
@@ -81,12 +84,14 @@ export default function ContentPage({ slug }: { slug: string }) {
         <div className="container page-hero-inner">
           <p className="eyebrow">L’Islam à l’Origine · {arabic ? "المعرفة والأمانة" : "Connaissance et transmission"}</p>
           <h1>{arabic ? page.arabic : page.title}</h1>
-          <p>{arabic ? "مساحة للتعلم والبحث والتأمل." : page.intro}</p>
+          <p>{arabic ? arabicPages[slug]?.intro : page.intro}</p>
           <button className="language-button page-language" onClick={() => setArabic(!arabic)}>{arabic ? "Français" : "العربية"}</button>
         </div>
       </section>
       <section className="section">
         <div className="container">
+          {slug === "coran" && <IslamicLibrary mode="quran" />}
+          {slug === "hadiths" && <IslamicLibrary mode="hadith" />}
           {isPlaces && <div className="photo-grid">
             {photos.map(photo => <article className="photo-card" key={photo.title}>
               <a href={photo.href} target="_blank" rel="noreferrer" aria-label={"Voir la source de la photo " + photo.title}>
@@ -98,11 +103,11 @@ export default function ContentPage({ slug }: { slug: string }) {
           <div className="content-grid">
             {page.items.map((item, index) => <article className="content-card" key={item.title}>
               <span className="content-number">{String(index + 1).padStart(2, "0")}</span>
-              <h2>{item.title}</h2><p>{item.text}</p>
+              <h2>{arabic ? (arabicPages[slug]?.titles[index] || item.title) : item.title}</h2><p>{arabic ? (arabicPages[slug]?.texts[index] || item.text) : item.text}</p>
             </article>)}
           </div>
           {slug === "a-propos" && <a className="button button-gold contact-button" href="https://whatsapp.com/channel/0029Vb896yMEQIatlW8t6G0o" target="_blank" rel="noreferrer">Rejoindre la chaîne WhatsApp ↗</a>}
-          <p className="editorial-note">Note éditoriale : les textes religieux et les données historiques publiés sur ce site devront être accompagnés de références vérifiables. Les photographies sont créditées individuellement.</p>
+          <p className="editorial-note">{arabic ? "تنبيه تحريري: يجب إرفاق النصوص الدينية والمعلومات التاريخية بمراجع يمكن التحقق منها. وقد ذُكرت مصادر الصور وتراخيصها بشكل منفصل." : "Note éditoriale : les textes religieux et les données historiques publiés sur ce site doivent être accompagnés de références vérifiables. Les photographies sont créditées individuellement."}</p>
         </div>
       </section>
     </main>
