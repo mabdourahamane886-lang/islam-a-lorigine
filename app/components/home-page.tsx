@@ -4,18 +4,19 @@ import { useState } from "react";
 import IslamicLibrary from "./islamic-library";
 
 const cards = [
-  { href: "/coran", icon: "۞", fr: "Le Saint Coran", ar: "القرآن الكريم", desc: "Découvrir les sourates, les versets, les traductions et les ressources d’étude." },
-  { href: "/hadiths", icon: "❖", fr: "Hadiths authentiques", ar: "الأحاديث النبوية", desc: "Étudier les paroles et actes prophétiques avec leurs références." },
-  { href: "/sira", icon: "☾", fr: "La vie du Prophète ﷺ", ar: "السيرة النبوية", desc: "Parcourir les grandes étapes de la Sîra et son contexte historique." },
-  { href: "/sciences-islamiques", icon: "✧", fr: "Sciences islamiques", ar: "العلوم الإسلامية", desc: "Explorer le tafsir, le fiqh, la croyance, la langue arabe et le tajwid." },
-  { href: "/lieux-merveilles", icon: "⌖", fr: "Lieux et merveilles", ar: "الأماكن والعجائب", desc: "Découvrir les lieux sacrés, les mosquées historiques et le patrimoine islamique." },
-  { href: "/a-propos", icon: "✦", fr: "À propos", ar: "من نحن", desc: "Comprendre la mission du projet et contacter son équipe." }
+  { href: "/coran", icon: "۞", fr: "Le Saint Coran", ar: "القرآن الكريم", desc: "Découvrir les sourates, les versets, les traductions et les ressources d’étude.", descAr: "اكتشف السور والآيات وترجمات المعاني وموارد الدراسة." },
+  { href: "/hadiths", icon: "❖", fr: "Hadiths authentiques", ar: "الأحاديث النبوية", desc: "Étudier les paroles et actes prophétiques avec leurs références.", descAr: "ادرس أقوال النبي ﷺ وأفعاله مع توثيق مصادرها." },
+  { href: "/sira", icon: "☾", fr: "La vie du Prophète ﷺ", ar: "السيرة النبوية", desc: "Parcourir les grandes étapes de la Sîra et son contexte historique.", descAr: "تعرّف على مراحل السيرة النبوية وسياقها التاريخي." },
+  { href: "/sciences-islamiques", icon: "✧", fr: "Sciences islamiques", ar: "العلوم الإسلامية", desc: "Explorer le tafsir, le fiqh, la croyance, la langue arabe et le tajwid.", descAr: "استكشف التفسير والفقه والعقيدة واللغة العربية والتجويد." },
+  { href: "/lieux-merveilles", icon: "⌖", fr: "Lieux et merveilles", ar: "الأماكن والعجائب", desc: "Découvrir les lieux sacrés, les mosquées historiques et le patrimoine islamique.", descAr: "اكتشف الأماكن المقدسة والمساجد التاريخية والتراث الإسلامي." },
+  { href: "/a-propos", icon: "✦", fr: "À propos", ar: "من نحن", desc: "Comprendre la mission du projet et contacter son équipe.", descAr: "تعرّف على رسالة المشروع وتواصل مع فريقه." }
 ];
 
 export default function HomePage() {
   const [arabic, setArabic] = useState(false);
   const title = arabic ? "الإسلام في الأصل" : "L’Islam à l’Origine";
   const intro = arabic ? "العودة إلى المصادر، فهم الإسلام، ونقل العلم بأمانة." : "Revenir aux sources, comprendre l’Islam, transmettre avec connaissance.";
+  function toggleArabic() { const next = !arabic; setArabic(next); document.documentElement.lang = next ? "ar" : "fr"; document.documentElement.dir = next ? "rtl" : "ltr"; document.body.classList.toggle("arabic-mode", next); }
   return (
     <main>
       <section className="hero">
@@ -30,9 +31,9 @@ export default function HomePage() {
             <a className="button button-gold" href="/coran">{arabic ? "ابدأ الاستكشاف" : "Commencer à explorer"}</a>
             <a className="button button-ghost" href="/lieux-merveilles">{arabic ? "اكتشف الأماكن" : "Découvrir les lieux"}</a>
           </div>
-          <button className="hero-language" onClick={() => setArabic(!arabic)}>{arabic ? "Afficher en français" : "العربية"}</button>
+          <button className="hero-language" onClick={toggleArabic}>{arabic ? "Afficher en français" : "العربية"}</button>
         </div>
-        <div className="hero-caption">La Kaaba — Masjid al-Haram, Makkah · Photo : Wikimedia Commons / Shahin Olakara (CC BY 2.0)</div>
+        <div className="hero-caption">{arabic ? "الكعبة المشرفة — المسجد الحرام، مكة · الصورة: ويكيميديا كومنز" : "La Kaaba — Masjid al-Haram, Makkah · Photo : Wikimedia Commons / Shahin Olakara (CC BY 2.0)"}</div>
       </section>
 
       <section className="section" id="explorer">
@@ -46,7 +47,7 @@ export default function HomePage() {
             {cards.map(card => <a className="feature-card" href={card.href} key={card.href}>
               <span className="feature-icon">{card.icon}</span>
               <h3>{arabic ? card.ar : card.fr}</h3>
-              <p>{card.desc}</p>
+              <p>{arabic ? card.descAr : card.desc}</p>
               <span className="card-link">{arabic ? "اكتشف المزيد ←" : "Découvrir la page →"}</span>
             </a>)}
           </div>
