@@ -38,7 +38,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <p>Revenir aux sources, comprendre l’Islam, transmettre avec connaissance.</p>
             </div>
             <div className="footer-links">
-              <a href="/apprentissage">Apprentissage</a><a href="/coran">Coran</a><a href="/hadiths">Hadiths</a><a href="/fiqh">Fiqh</a><a href="/nahwu">Nahwu</a><a href="/sira">Sîra</a><a href="/encyclopedie-savants">Savants</a><a href="/lieux-merveilles">Lieux et merveilles</a>
+              <a href="/apprentissage">Académie</a><a href="/coran">Coran</a><a href="/hadiths">Hadiths</a><a href="/tajwid">Tajwid</a><a href="/fiqh">Fiqh</a><a href="/nahwu">Nahwu</a><a href="/apprentissage/sarf">Sarf</a><a href="/tafsir">Tafsir</a><a href="/sira">Sîra</a><a href="/encyclopedie-savants">Savants</a><a href="/lieux-merveilles">Patrimoine</a>
             </div>
             <small>© {new Date().getFullYear()} L’Islam à l’Origine. Les contenus doivent être vérifiés et référencés.</small>
           </div>
