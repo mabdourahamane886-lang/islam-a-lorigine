@@ -106,6 +106,36 @@ export default function ContentPage({ slug }: { slug: string }) {
               <h2>{arabic ? (arabicPages[slug]?.titles[index] || item.title) : item.title}</h2><p>{arabic ? (arabicPages[slug]?.texts[index] || item.text) : item.text}</p>
             </article>)}
           </div>
+          {slug === "sira" && <section className="history-panel">
+            <p className="eyebrow">{arabic ? "خط زمني" : "Repères chronologiques"}</p>
+            <h2>{arabic ? "محطات من السيرة النبوية" : "Les grandes étapes de la Sîra"}</h2>
+            <div className="timeline-grid">
+              {(arabic ? [
+                ["نحو 570 م","المولد في مكة","تاريخ تقليدي يُربط بعام الفيل."],
+                ["610 م","بداية الوحي","نزول أوائل الوحي في غار حراء."],
+                ["622 م","الهجرة إلى المدينة","بداية المرحلة المدنية والتقويم الهجري."],
+                ["630 م","فتح مكة","دخول مكة في السنة الثامنة للهجرة."],
+                ["632 م","الوفاة في المدينة","وفاة النبي ﷺ في السنة الحادية عشرة للهجرة."]
+              ] : [
+                ["Vers 570","Naissance à La Mecque","Date traditionnelle associée à l’Année de l’Éléphant."],
+                ["610","Début de la révélation","Premières révélations reçues dans la grotte de Hira."],
+                ["622","L’Hégire","Migration vers Yathrib, future Médine ; début de l’ère hégirienne."],
+                ["630","Retour à La Mecque","Entrée à La Mecque durant la huitième année de l’Hégire."],
+                ["632","Décès à Médine","Décès du Prophète ﷺ durant la onzième année de l’Hégire."]
+              ]).map((entry, i) => <article className="timeline-card" key={i}><strong>{entry[0]}</strong><h3>{entry[1]}</h3><p>{entry[2]}</p></article>)}
+            </div>
+            <p className="source-note">{arabic ? "التواريخ تقريبية وبعضها تقليدي؛ ينبغي الرجوع إلى المصادر المتخصصة عند التوسع." : "Les dates anciennes sont parfois approximatives et certaines relèvent de la chronologie traditionnelle. Pour approfondir :"} <a href="https://www.britannica.com/biography/Muhammad" target="_blank" rel="noreferrer">Encyclopaedia Britannica — Muhammad ↗</a></p>
+          </section>}
+          {slug === "lieux-merveilles" && <section className="history-panel">
+            <p className="eyebrow">{arabic ? "التراث والتاريخ" : "Patrimoine et histoire"}</p>
+            <h2>{arabic ? "مراجع للتعمق في المواقع" : "Repères historiques et patrimoniaux"}</h2>
+            <div className="timeline-grid">
+              <article className="timeline-card"><strong>Agadez · Niger</strong><h3>{arabic ? "مدينة تاريخية صحراوية" : "Carrefour saharien"}</h3><p>{arabic ? "تُعد المدينة القديمة في أغاديس شاهداً على التجارة العابرة للصحراء والعمارة الطينية في منطقة الساحل." : "La vieille ville témoigne des échanges transsahariens et de l’architecture en terre du Sahel."}<br/><a href="https://whc.unesco.org/en/list/1268/" target="_blank" rel="noreferrer">UNESCO — Centre historique d’Agadez ↗</a></p></article>
+              <article className="timeline-card"><strong>Al-Andalus · Espagne</strong><h3>{arabic ? "قصر الحمراء في غرناطة" : "L’Alhambra de Grenade"}</h3><p>{arabic ? "مجمع قصري وحصني بارز من تاريخ بني نصر، وهو جزء من موقع التراث العالمي." : "Ensemble palatial et fortifié majeur de l’époque nasride, inscrit au patrimoine mondial avec l’Albaicín."}<br/><a href="https://whc.unesco.org/en/list/314/" target="_blank" rel="noreferrer">UNESCO — Alhambra, Generalife et Albaicín ↗</a></p></article>
+              <article className="timeline-card"><strong>Jérusalem · Palestine</strong><h3>{arabic ? "البلدة القديمة" : "La vieille ville"}</h3><p>{arabic ? "Lieu de patrimoine religieux et historique majeur, dont le statut et l’histoire nécessitent une présentation documentée." : "Un patrimoine religieux et historique majeur, dont le statut et les différentes périodes doivent être présentés avec des sources solides."}<br/><a href="https://whc.unesco.org/en/list/148/" target="_blank" rel="noreferrer">UNESCO — Vieille ville de Jérusalem ↗</a></p></article>
+            </div>
+            <p className="source-note">{arabic ? "المصادر المؤسسية تساعد على التحقق من المعلومات التاريخية والتراثية." : "Les liens UNESCO servent de points de départ documentaires ; les notices seront enrichies au fil des références vérifiées."}</p>
+          </section>}
           {slug === "a-propos" && <a className="button button-gold contact-button" href="https://whatsapp.com/channel/0029Vb896yMEQIatlW8t6G0o" target="_blank" rel="noreferrer">Rejoindre la chaîne WhatsApp ↗</a>}
           <p className="editorial-note">{arabic ? "تنبيه تحريري: يجب إرفاق النصوص الدينية والمعلومات التاريخية بمراجع يمكن التحقق منها. وقد ذُكرت مصادر الصور وتراخيصها بشكل منفصل." : "Note éditoriale : les textes religieux et les données historiques publiés sur ce site doivent être accompagnés de références vérifiables. Les photographies sont créditées individuellement."}</p>
         </div>
