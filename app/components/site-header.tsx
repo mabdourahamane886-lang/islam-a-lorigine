@@ -7,6 +7,7 @@ const links = [
   ["/coran", "Coran", "القرآن"],
   ["/hadiths", "Hadiths", "الحديث"],
   ["/sira", "Sîra", "السيرة"],
+  ["/encyclopedie-savants", "Savants", "العلماء"],
   ["/sciences-islamiques", "Sciences", "العلوم الإسلامية"],
   ["/lieux-merveilles", "Lieux & merveilles", "الأماكن والعجائب"],
   ["/a-propos", "À propos", "من نحن"]
