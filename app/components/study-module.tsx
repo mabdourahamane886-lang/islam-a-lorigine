@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export type StudyLesson = { title: string; objective: string; content: string[]; reference: string };
 export type StudyQuestion = { question: string; choices: string[]; answer: number; explanation: string };
@@ -13,6 +13,22 @@ export default function StudyModule({ title, arabicTitle, intro, level, lessons,
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [checked, setChecked] = useState(false);
   const [completed, setCompleted] = useState<number[]>([]);
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("islam-academy-progress:" + title);
+      if (saved) {
+        const parsed = JSON.parse(saved) as { completed?: number[]; answers?: Record<number, number> };
+        if (Array.isArray(parsed.completed)) setCompleted(parsed.completed.filter(n => Number.isInteger(n) && n >= 0 && n < lessons.length));
+        if (parsed.answers && typeof parsed.answers === "object") setAnswers(parsed.answers);
+      }
+    } catch { /* Ignore corrupted local progress and start a clean session. */ }
+    setHydrated(true);
+  }, [title, lessons.length]);
+  useEffect(() => {
+    if (!hydrated) return;
+    try { localStorage.setItem("islam-academy-progress:" + title, JSON.stringify({ completed, answers })); } catch { /* Storage may be unavailable in private browsing. */ }
+  }, [completed, answers, title, hydrated]);
   const lesson = lessons[selected];
   const score = questions.reduce((n, q, i) => n + (answers[i] === q.answer ? 1 : 0), 0);
   const progress = Math.round(completed.length / Math.max(lessons.length, 1) * 100);
