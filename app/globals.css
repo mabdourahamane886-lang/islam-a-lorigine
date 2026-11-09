@@ -19,7 +19,7 @@ button{font:inherit;cursor:pointer}
 .menu-button{display:none}
 .hero{position:relative;min-height:690px;display:flex;align-items:center;overflow:hidden;background:#061a14}
 .hero-image,.hero-shade{position:absolute;inset:0}
-.hero-image{background-image:url('https://upload.wikimedia.org/wikipedia/commons/5/5b/Kaaba%2C_Masjid_Al_Haram%2C_Mecca.jpg');background-size:cover;background-position:center 47%;transform:scale(1.02)}
+.hero-image{background-image:url('https://upload.wikimedia.org/wikipedia/commons/4/42/Kaaba%2C_Masjid_Al_Haram%2C_Mecca.jpg');background-size:cover;background-position:center 47%;transform:scale(1.02)}
 .hero-shade{background:linear-gradient(90deg,rgba(3,17,13,.94),rgba(4,24,18,.77) 55%,rgba(4,19,15,.42))}
 .hero-content{position:relative;z-index:1;padding-block:100px}
 .eyebrow{text-transform:uppercase;letter-spacing:3px;color:var(--gold);font-size:.72rem;font-weight:800}
