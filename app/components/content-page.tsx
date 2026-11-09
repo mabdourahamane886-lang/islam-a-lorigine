@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import IslamicLibrary from "./islamic-library";
 
 const pages: Record<string, { title: string; arabic: string; intro: string; items: { title: string; text: string }[] }> = {
@@ -75,10 +75,11 @@ const photos = [
 
 export default function ContentPage({ slug }: { slug: string }) {
   const [arabic, setArabic] = useState(false);
+  useEffect(() => { setArabic(document.documentElement.lang === "ar"); const sync = (event: Event) => setArabic((event as CustomEvent<{ arabic: boolean }>).detail.arabic); window.addEventListener("site-language-change", sync); return () => window.removeEventListener("site-language-change", sync); }, []);
   const page = pages[slug];
   if (!page) return null;
   const isPlaces = slug === "lieux-merveilles";
-  function toggleArabic() { const next = !arabic; setArabic(next); document.documentElement.lang = next ? "ar" : "fr"; document.documentElement.dir = next ? "rtl" : "ltr"; document.body.classList.toggle("arabic-mode", next); }
+  function toggleArabic() { const next = !arabic; setArabic(next); document.documentElement.lang = next ? "ar" : "fr"; document.documentElement.dir = next ? "rtl" : "ltr"; document.body.classList.toggle("arabic-mode", next); window.dispatchEvent(new CustomEvent("site-language-change", { detail: { arabic: next } })); }
   return (
     <main className="content-main">
       <section className="page-hero">
