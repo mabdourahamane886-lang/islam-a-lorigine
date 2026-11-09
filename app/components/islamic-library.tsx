@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import HadithAudio from "./hadith-audio";
 
 type Surah = { number: number; name: string; englishName: string; englishNameTranslation: string; numberOfAyahs: number; revelationType: string };
 type Ayah = { numberInSurah: number; text: string; audio?: string; translation?: { text: string } };
@@ -109,6 +110,7 @@ export default function IslamicLibrary({ mode }: { mode: "quran" | "hadith" | "s
         <div className="hadith-list">{filteredHadiths.map(h => <article className="hadith-card" key={h.id}>
           <p className="hadith-theme">{h.theme}</p><p className="hadith-arabic" dir="rtl">{h.arabic}</p><p className="hadith-french">{h.french}</p>
           <div className="hadith-reference"><strong>{h.source}</strong><span>{h.reference}</span></div>
+          <HadithAudio arabicText={h.arabic} frenchText={h.french} arabic={arabic} />
         </article>)}</div>
         {!filteredHadiths.length && <p className="library-status">{arabic ? "لا توجد نتائج." : "Aucun hadith ne correspond à cette recherche."}</p>}
         <p className="source-note">{arabic ? "يُرجى مراجعة الطبعة المعتمدة عند الاقتباس العلمي." : "Pour une citation académique, vérifier le texte et la numérotation dans l’édition de référence utilisée. Cette sélection n’est pas un catalogue exhaustif."} <a href="https://sunnah.com/" target="_blank" rel="noreferrer">Consulter les recueils ↗</a></p>
