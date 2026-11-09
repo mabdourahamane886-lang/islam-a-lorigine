@@ -29,6 +29,7 @@ const arabicHadithIntro = "مجموعة مختارة من الأحاديث ال�
 
 export default function IslamicLibrary({ mode }: { mode: "quran" | "hadith" | "search" }) {
   const [arabic, setArabic] = useState(false);
+  useEffect(() => { setArabic(document.documentElement.lang === "ar"); const sync = (event: Event) => setArabic((event as CustomEvent<{ arabic: boolean }>).detail.arabic); window.addEventListener("site-language-change", sync); return () => window.removeEventListener("site-language-change", sync); }, []);
   const [surahs, setSurahs] = useState<Surah[]>([]);
   const [surahNumber, setSurahNumber] = useState(1);
   const [ayahs, setAyahs] = useState<Ayah[]>([]);
@@ -65,7 +66,7 @@ export default function IslamicLibrary({ mode }: { mode: "quran" | "hadith" | "s
   const filteredHadiths = useMemo(() => hadiths.filter(h => (h.arabic + " " + h.french + " " + h.source + " " + h.theme).toLowerCase().includes(query.toLowerCase())), [query]);
   const currentSurah = surahs.find(s => s.number === surahNumber);
   const historicalResults = useMemo(() => historyDocuments.filter(item => (item.title + " " + item.text + " " + item.keywords).toLowerCase().includes(query.toLowerCase())), [query]);
-  function toggleArabic() { const next = !arabic; setArabic(next); document.documentElement.lang = next ? "ar" : "fr"; document.documentElement.dir = next ? "rtl" : "ltr"; document.body.classList.toggle("arabic-mode", next); }
+  function toggleArabic() { const next = !arabic; setArabic(next); document.documentElement.lang = next ? "ar" : "fr"; document.documentElement.dir = next ? "rtl" : "ltr"; document.body.classList.toggle("arabic-mode", next); window.dispatchEvent(new CustomEvent("site-language-change", { detail: { arabic: next } })); }
 
   async function searchAll() {
     if (!query.trim()) return;
