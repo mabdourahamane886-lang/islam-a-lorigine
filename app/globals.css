@@ -333,3 +333,11 @@ body{background:#fffefa;color:#252a33}
 .huruf-card strong{font-size:.78rem}
 @media(max-width:720px){.huruf-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.huruf-selected{gap:15px}.huruf-selected>span{min-width:80px}}
 @media(max-width:420px){.huruf-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* Académie : affichage adaptatif des leçons et des quiz */
+.study-layout{display:grid;grid-template-columns:minmax(220px,.8fr) minmax(0,2fr);gap:22px;align-items:start}
+.study-layout aside{position:sticky;top:94px}
+.study-layout button:disabled{opacity:.45;cursor:not-allowed}
+.study-layout fieldset{min-width:0}
+@media(max-width:760px){.study-layout{grid-template-columns:1fr}.study-layout aside{position:static}.study-layout aside button{text-align:left!important}}
+[dir="rtl"] .study-layout button{text-align:right!important}
