@@ -40,7 +40,7 @@ export default function StudyModule({ title, arabicTitle, intro, level, lessons,
           <div style={{height:"100%",width:progress+"%",background:"#b58b3b",transition:"width .2s"}}/>
         </div>
       </div>
-      <div style={{display:"grid",gridTemplateColumns:"minmax(220px, .8fr) minmax(0, 2fr)",gap:22,alignItems:"start"}}>
+      <div className="study-layout">
         <aside className="learning-card" style={{minHeight:0}}>
           <h2 style={{marginTop:0}}>Plan du cours</h2>
           {orderedLessons.map(l => <button key={l.index} type="button" onClick={()=>setSelected(l.index)} aria-current={selected===l.index?"step":undefined}
