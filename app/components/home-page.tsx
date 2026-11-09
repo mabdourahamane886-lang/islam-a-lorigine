@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import IslamicLibrary from "./islamic-library";
 
 const cards = [
+  { href: "/apprentissage", icon: "✧", fr: "Académie d’apprentissage", ar: "أكاديمية التعلم", desc: "Apprendre les lettres arabes, la lecture, le tajwid et les sciences islamiques avec des exercices.", descAr: "تعلم الحروف العربية والقراءة والتجويد والعلوم الإسلامية من خلال التمارين." },
   { href: "/coran", icon: "۞", fr: "Le Saint Coran", ar: "القرآن الكريم", desc: "Découvrir les sourates, les versets, les traductions et les ressources d’étude.", descAr: "اكتشف السور والآيات وترجمات المعاني وموارد الدراسة." },
   { href: "/hadiths", icon: "❖", fr: "Hadiths authentiques", ar: "الأحاديث النبوية", desc: "Étudier les paroles et actes prophétiques avec leurs références.", descAr: "ادرس أقوال النبي ﷺ وأفعاله مع توثيق مصادرها." },
   { href: "/sira", icon: "☾", fr: "La vie du Prophète ﷺ", ar: "السيرة النبوية", desc: "Parcourir les grandes étapes de la Sîra et son contexte historique.", descAr: "تعرّف على مراحل السيرة النبوية وسياقها التاريخي." },
