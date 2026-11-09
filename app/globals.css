@@ -124,3 +124,68 @@ button{font:inherit;cursor:pointer}
 [dir="rtl"] .hadith-reference{flex-direction:row-reverse}
 @media(max-width:760px){.timeline-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.search-form{flex-direction:column}.library-topline{align-items:flex-start}}
 @media(max-width:520px){.timeline-grid{grid-template-columns:1fr}.library-panel{padding:18px}.ayah-card{padding:16px}.hadith-reference{display:grid}}
+
+
+/* Nouvelle identité visuelle : ivoire, blanc et or champagne */
+:root{
+  --green-950:#f7f5ef;--green-900:#ffffff;--green-800:#f1eee5;--green-700:#e8e1d1;
+  --gold:#b58b3b;--gold-light:#8f6a25;--ivory:#252a33;--muted:#626b78;
+  --line:rgba(181,139,59,.28);--radius:20px;
+  --ink:#252a33;--paper:#fffefa;--gold-soft:#f5eddc;
+}
+body{background:var(--paper);color:var(--ink)}
+.site-header{background:rgba(255,254,250,.94);border-bottom:1px solid var(--line);box-shadow:0 5px 24px rgba(35,31,22,.045)}
+.brand{color:var(--ink)}
+.brand-mark{background:var(--gold-soft);color:var(--gold-light);border-color:var(--gold)}
+.main-nav{color:#424956}
+.main-nav a:hover,.footer-links a:hover{color:var(--gold-light)}
+.language-button,.menu-button{background:#fff;border-color:var(--line);color:var(--gold-light)}
+.menu-button{color:var(--ink)}
+.hero{background:#292b30}
+.hero-shade{background:linear-gradient(90deg,rgba(20,23,29,.78),rgba(20,23,29,.48) 58%,rgba(20,23,29,.18))}
+.eyebrow{color:var(--gold-light)}
+.bismillah{color:#f2dcae}
+.hero h1,.page-hero h1{color:#fff}
+.hero-lead{color:#f5f3ee}
+.button-gold{background:linear-gradient(135deg,#e7cf9b,#c39a4b);color:#29251e}
+.button-ghost{border-color:#fff9;background:#ffffff20;color:#fff}
+.hero-language{color:#f4dfb5}
+.section-heading>p:last-child,.community-inner p{color:var(--muted)}
+.feature-card,.content-card{background:#fff;border:1px solid var(--line);box-shadow:0 8px 28px rgba(42,35,22,.045)}
+.feature-card:hover{border-color:#b58b3b99;box-shadow:0 14px 34px rgba(42,35,22,.09)}
+.feature-icon{display:none}
+.feature-card h3,.photo-copy h3{color:var(--ink)}
+.feature-card p,.content-card p{color:var(--muted)}
+.card-link{color:var(--gold-light)}
+.quote-section{background:linear-gradient(120deg,#f5efdf,#fffefa);border-color:var(--line)}
+.quote-inner h2{color:var(--ink)}
+.quote-inner>p:last-child{color:var(--muted)}
+.community-inner{background:#fff;border-color:var(--line);box-shadow:0 8px 28px rgba(42,35,22,.045)}
+.site-footer{background:#f0ece3;border-color:var(--line)}
+.footer-inner p,.footer-links{color:#59616c}
+.footer-inner small{border-color:var(--line);color:#737b85}
+.page-hero{background:radial-gradient(ellipse at 85% 0%,#f1e5c8 0,transparent 48%),linear-gradient(135deg,#fffefa,#f5f0e5);border-color:var(--line)}
+.page-hero h1{color:var(--ink)}
+.page-hero-inner>p:not(.eyebrow){color:var(--muted)}
+.photo-card{background:#fff;border-color:var(--line);box-shadow:0 8px 28px rgba(42,35,22,.05)}
+.photo-copy p,.photo-copy small{color:var(--muted)}
+.photo-copy small a,.photo-copy small a:hover{color:var(--gold-light)}
+.editorial-note{background:#f7f2e7;color:#59616c;border-color:var(--gold)}
+.library-panel,.history-panel{background:#fff;border-color:var(--line);color:var(--ink);box-shadow:0 8px 28px rgba(42,35,22,.045)}
+.library-topline h2,.history-panel>h2{color:var(--ink)}
+.library-intro,.surah-heading p,.library-status{color:var(--muted)}
+.field-label{color:var(--gold-light)}
+.library-select,.library-input{background:#fffefa;color:var(--ink);border-color:#d8c9a8}
+.library-select:focus,.library-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(181,139,59,.12)}
+.surah-heading h3,.ayah-arabic,.hadith-arabic{color:#292b30}
+.ayah-card,.hadith-card,.search-result,.timeline-card{background:#fffefa;border-color:var(--line)}
+.ayah-translation,.hadith-french,.timeline-card p{color:#59616c}
+.ayah-number{color:var(--gold-light);border-color:var(--gold)}
+.hadith-theme,.timeline-card>strong{color:var(--gold-light)}
+.hadith-reference{border-color:var(--line);color:var(--gold-light)}
+.hadith-reference span{color:var(--muted)}
+.source-note{color:var(--muted)}
+.source-note a,.search-result a,.timeline-card a{color:var(--gold-light)}
+.search-subtitle{color:var(--gold-light)}
+@media(max-width:850px){.main-nav{background:#fffefa;border-color:var(--line);box-shadow:0 16px 38px rgba(42,35,22,.12)}}
+[dir="rtl"] .main-nav{direction:rtl}
