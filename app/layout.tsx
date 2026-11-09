@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     template: "%s | L’Islam à l’Origine"
   },
   description: "Bibliothèque islamique bilingue : Coran, récitation audio, hadiths référencés, Sîra, sciences islamiques et patrimoine historique.",
-  metadataBase: new URL("https://islam-a-lorigine-bickri-service-agency.vercel.app"),
+  metadataBase: new URL("https://islam-a-lorigine.bickriservice-agency.workers.dev"),
   openGraph: {
     title: "L’Islam à l’Origine",
     description: "Revenir aux sources, comprendre l’Islam, transmettre avec connaissance.",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#071d17"
+  themeColor: "#fffefa"
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
