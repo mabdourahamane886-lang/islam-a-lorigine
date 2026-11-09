@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import IslamicLibrary from "./islamic-library";
 
 const cards = [
   { href: "/coran", icon: "۞", fr: "Le Saint Coran", ar: "القرآن الكريم", desc: "Découvrir les sourates, les versets, les traductions et les ressources d’étude." },
@@ -51,6 +52,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <section className="section documentary-search"><div className="container"><IslamicLibrary mode="search" /></div></section>
 
       <section className="quote-section">
         <div className="container quote-inner">
