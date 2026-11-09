@@ -9,14 +9,14 @@ const sources: Source[] = [
     title: "سير أعلام النبلاء — Siyar Aʿlām an-Nubalāʾ",
     author: "Imam adh-Dhahabi (الذهبي)",
     description: "Ouvrage biographique majeur. Les notices devront être reliées à leur volume et à leur page dans l’édition retenue.",
-    url: "https://waqfeya.net/",
+    url: "https://waqfeya.net/books/سير-أعلام-النبلاء--السيرة-النبوية--سيرة-الخلفاء-الراشدين--الجزء-المفقود-ت-الأرناؤوط-345331fb5caa4981b08a5c41bd30aea7",
     role: "Source biographique principale"
   },
   {
     title: "تقريب التهذيب — Taqrib at-Tahdhib",
     author: "Ibn Hajar al-Asqalani (ابن حجر العسقلاني)",
     description: "Dictionnaire critique des transmetteurs de hadith. Il sera utilisé pour les notices de rijal, sans le présenter comme un dictionnaire exhaustif de tous les savants.",
-    url: "https://thahabi.org/book/6144",
+    url: "https://ar.wikisource.org/wiki/ملف:كتاب_تقريب_التهذيب.pdf",
     role: "Source complémentaire — transmetteurs"
   }
 ];
