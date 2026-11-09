@@ -81,3 +81,46 @@ button{font:inherit;cursor:pointer}
 @media(max-width:1050px){.main-nav{gap:11px;font-size:.74rem}.brand{font-size:.9rem}}
 @media(max-width:850px){.menu-button{display:block}.main-nav{display:none;position:absolute;top:78px;left:20px;right:20px;background:#09251d;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 20px 50px #0008}.main-nav.is-open{display:grid;gap:14px}.feature-grid,.content-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.container{width:min(100% - 30px,1160px)}.nav-wrap{min-height:68px}.brand{font-size:.82rem}.brand-mark{width:34px;height:34px}.main-nav{top:68px;left:15px;right:15px}.hero{min-height:670px}.hero-content{padding-block:85px}.hero h1{letter-spacing:-1.5px}.hero-caption{font-size:.56rem}.section{padding:64px 0}.feature-grid,.content-grid,.photo-grid{grid-template-columns:1fr}.photo-card img{height:235px}.community-inner{align-items:flex-start;flex-direction:column;padding:25px}.footer-inner{grid-template-columns:1fr}.footer-links{justify-content:flex-start}.footer-inner small{grid-column:auto}}
+
+
+/* Bibliothèques coraniques, hadiths et recherche documentaire */
+.library-panel{background:linear-gradient(145deg,#0d3025,#081e17);border:1px solid var(--line);border-radius:26px;padding:clamp(20px,4vw,36px);margin:24px 0;color:var(--ivory)}
+.library-topline{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.library-topline h2,.history-panel>h2{font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.15;margin:6px 0 12px;color:var(--gold-light)}
+.library-intro{color:var(--muted);max-width:780px}
+.field-label{display:block;margin:20px 0 8px;color:var(--gold-light);font-weight:700}
+.library-select,.library-input{width:100%;min-height:49px;border:1px solid var(--line);border-radius:12px;background:#061a14;color:var(--ivory);padding:12px 15px;font:inherit;outline:none}
+.library-select:focus,.library-input:focus{border-color:var(--gold)}
+.surah-heading{text-align:center;padding:24px 10px 15px}
+.surah-heading h3{font-family:Amiri,serif;font-size:2.5rem;color:var(--gold-light);margin:0}
+.surah-heading p,.library-status{color:var(--muted)}
+.ayah-list{display:grid;gap:13px;margin-top:15px}
+.ayah-card{position:relative;padding:22px;border:1px solid var(--line);border-radius:16px;background:#ffffff08}
+.ayah-number{display:inline-grid;place-items:center;width:31px;height:31px;border:1px solid var(--gold);border-radius:50%;color:var(--gold-light);font-size:.8rem}
+.ayah-arabic,.hadith-arabic{font-family:Amiri,serif;font-size:clamp(1.45rem,3.5vw,2rem);line-height:2.05;text-align:right;color:#fff;margin:10px 0}
+.ayah-translation,.hadith-french{color:#d0dbd2;font-size:.96rem;line-height:1.8}
+.ayah-audio{display:block;width:min(100%,390px);height:38px;margin:12px 0 0 auto;accent-color:var(--gold)}
+.source-note{font-size:.78rem;color:#a9b9af;margin-top:22px}
+.source-note a,.search-result a{color:var(--gold-light);text-decoration:underline}
+.hadith-list{display:grid;gap:14px;margin-top:18px}
+.hadith-card,.search-result{border:1px solid var(--line);border-radius:16px;padding:20px;background:#ffffff08;margin-top:12px}
+.hadith-theme{color:var(--gold);font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px}
+.hadith-reference{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;border-top:1px solid var(--line);padding-top:12px;margin-top:14px;color:var(--gold-light);font-size:.82rem}
+.hadith-reference span{color:var(--muted)}
+.search-form{display:flex;gap:10px;margin:18px 0;align-items:stretch}
+.search-form .library-input{flex:1;min-width:0}
+.search-form .button:disabled{opacity:.5;cursor:not-allowed}
+.search-subtitle{color:var(--gold-light);margin:24px 0 6px}
+.library-error{padding:12px 14px;border:1px solid #b75b50;border-radius:12px;color:#ffd1c9;background:#6b211d33}
+.history-panel{margin-top:52px;padding:28px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#0d3025,#081e17)}
+.timeline-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin-top:22px}
+.timeline-card{border:1px solid var(--line);border-radius:15px;background:#ffffff08;padding:18px}
+.timeline-card>strong{color:var(--gold);font-size:.85rem}
+.timeline-card h3{color:var(--gold-light);font-size:1.05rem;margin:8px 0}
+.timeline-card p{color:var(--muted);font-size:.88rem;line-height:1.75}
+.timeline-card a{color:var(--gold-light);text-decoration:underline}
+.documentary-search{padding-top:55px;padding-bottom:55px}
+[dir="rtl"] .library-panel,[dir="rtl"] .history-panel{text-align:right}
+[dir="rtl"] .hadith-reference{flex-direction:row-reverse}
+@media(max-width:760px){.timeline-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.search-form{flex-direction:column}.library-topline{align-items:flex-start}}
+@media(max-width:520px){.timeline-grid{grid-template-columns:1fr}.library-panel{padding:18px}.ayah-card{padding:16px}.hadith-reference{display:grid}}
