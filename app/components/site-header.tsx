@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const links = [
   ["/", "Accueil", "الرئيسية"],
@@ -15,6 +15,7 @@ const links = [
 export default function SiteHeader() {
   const [arabic, setArabic] = useState(false);
   const [open, setOpen] = useState(false);
+  useEffect(() => { const sync = (event: Event) => setArabic((event as CustomEvent<{ arabic: boolean }>).detail.arabic); window.addEventListener("site-language-change", sync); return () => window.removeEventListener("site-language-change", sync); }, []);
 
   function toggleLanguage() {
     const next = !arabic;
@@ -22,6 +23,7 @@ export default function SiteHeader() {
     document.documentElement.lang = next ? "ar" : "fr";
     document.documentElement.dir = next ? "rtl" : "ltr";
     document.body.classList.toggle("arabic-mode", next);
+    window.dispatchEvent(new CustomEvent("site-language-change", { detail: { arabic: next } }));
   }
 
   return (
