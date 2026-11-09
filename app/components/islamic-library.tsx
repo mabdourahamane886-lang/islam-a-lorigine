@@ -40,7 +40,7 @@ export default function IslamicLibrary({ mode }: { mode: "quran" | "hadith" | "s
   useEffect(() => {
     if (mode !== "quran" || !surahs.length) return;
     let active = true;
-    setLoading(true); setError(""); setPlaying(false);
+    setLoading(true); setError("");
     Promise.all([
       fetch(`https://api.alquran.cloud/v1/surah/${surahNumber}/ar.alafasy`).then(r => r.json()),
       fetch(`https://api.alquran.cloud/v1/surah/${surahNumber}/fr.hamidullah`).then(r => r.json())
@@ -109,7 +109,7 @@ export default function IslamicLibrary({ mode }: { mode: "quran" | "hadith" | "s
           <input className="library-input" value={query} onChange={e => setQuery(e.target.value)} placeholder={arabic ? "اكتب كلمة أو عبارة..." : "Ex. : patience, prière, science, miséricorde…"} />
           <button className="button button-gold" disabled={searching || !query.trim()}>{searching ? "…" : (arabic ? "بحث" : "Rechercher")}</button>
         </form>
-        {searchResults.map((m: any, i: number) => <article className="search-result" key={i}><strong>{m.surah?.englishName} — {arabic ? "آية" : "verset"} {m.numberInSurah}</strong><p dir="rtl" className="hadith-arabic">{m.text}</p><p>{m.translation || ""}</p></article>)}
+        {searchResults.map((m: any, i: number) => <article className="search-result" key={i}><strong>{m.surah?.englishName} — {arabic ? "آية" : "verset"} {m.numberInSurah}</strong><p>{m.text}</p></article>)}
         <h3 className="search-subtitle">{arabic ? "الأحاديث ذات الصلة" : "Hadiths correspondants"}</h3>
         {filteredHadiths.map(h => <article className="search-result" key={h.id}><strong>{h.source} · {h.reference}</strong><p dir="rtl" className="hadith-arabic">{h.arabic}</p><p>{h.french}</p></article>)}
         <h3 className="search-subtitle">{arabic ? "موارد تاريخية" : "Ressources historiques"}</h3>
