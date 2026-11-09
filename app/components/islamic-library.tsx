@@ -15,6 +15,15 @@ const hadiths: Hadith[] = [
   { id: "b6116", arabic: "لَا تَغْضَبْ", french: "Ne te mets pas en colère.", source: "Sahih al-Bukhari", reference: "Hadith 6116 — Livre du comportement", theme: "Maîtrise de soi" }
 ];
 
+const historyDocuments = [
+  { title: "La Sîra — période mecquoise", text: "Début de la révélation vers 610, prédication à La Mecque et premières communautés musulmanes.", href: "/sira", keywords: "mecque révélation hira prophète muhammad" },
+  { title: "L’Hégire — 622", text: "Migration de La Mecque vers Yathrib, future Médine, et début de l’ère hégirienne.", href: "/sira", keywords: "hegire hijra medine 622 migration" },
+  { title: "Agadez — patrimoine saharien", text: "Vieille ville, architecture en terre et histoire des échanges transsahariens. Référence : UNESCO, centre historique d’Agadez.", href: "/lieux-merveilles", keywords: "agadez niger mosquee sahara unesco" },
+  { title: "Al-Andalus — héritage historique", text: "Grenade, Cordoue et héritages artistiques, scientifiques et architecturaux de l’histoire musulmane en péninsule Ibérique.", href: "/lieux-merveilles", keywords: "andalousie andalus espagne alhambra cordoue grenade" },
+  { title: "Jérusalem — vieille ville", text: "Patrimoine religieux et historique de la vieille ville et de ses lieux sacrés.", href: "/lieux-merveilles", keywords: "jerusalem palestine al aqsa aqsa" },
+  { title: "La Mecque et Médine", text: "Les deux villes saintes, les lieux majeurs de la révélation et de la première communauté musulmane.", href: "/lieux-merveilles", keywords: "mecque makkah medine madinah kaaba mosquee prophetique" }
+];
+
 const frenchHadithIntro = "Sélection de hadiths rapportés dans les deux recueils authentiques. Les références suivent la numérotation courante, qui peut varier selon les éditions.";
 const arabicHadithIntro = "مجموعة مختارة من الأحاديث الواردة في الصحيحين. وقد يختلف ترقيم الأحاديث باختلاف الطبعات.";
 
@@ -55,6 +64,7 @@ export default function IslamicLibrary({ mode }: { mode: "quran" | "hadith" | "s
 
   const filteredHadiths = useMemo(() => hadiths.filter(h => (h.arabic + " " + h.french + " " + h.source + " " + h.theme).toLowerCase().includes(query.toLowerCase())), [query]);
   const currentSurah = surahs.find(s => s.number === surahNumber);
+  const historicalResults = useMemo(() => historyDocuments.filter(item => (item.title + " " + item.text + " " + item.keywords).toLowerCase().includes(query.toLowerCase())), [query]);
   function toggleArabic() { const next = !arabic; setArabic(next); document.documentElement.lang = next ? "ar" : "fr"; document.documentElement.dir = next ? "rtl" : "ltr"; document.body.classList.toggle("arabic-mode", next); }
 
   async function searchAll() {
@@ -111,10 +121,10 @@ export default function IslamicLibrary({ mode }: { mode: "quran" | "hadith" | "s
         </form>
         {searchResults.map((m: any, i: number) => <article className="search-result" key={i}><strong>{m.surah?.englishName} — {arabic ? "آية" : "verset"} {m.numberInSurah}</strong><p>{m.text}</p></article>)}
         <h3 className="search-subtitle">{arabic ? "الأحاديث ذات الصلة" : "Hadiths correspondants"}</h3>
-        {filteredHadiths.map(h => <article className="search-result" key={h.id}><strong>{h.source} · {h.reference}</strong><p dir="rtl" className="hadith-arabic">{h.arabic}</p><p>{h.french}</p></article>)}
+        {query.trim() && filteredHadiths.map(h => <article className="search-result" key={h.id}><strong>{h.source} · {h.reference}</strong><p dir="rtl" className="hadith-arabic">{h.arabic}</p><p>{h.french}</p></article>)}
         <h3 className="search-subtitle">{arabic ? "موارد تاريخية" : "Ressources historiques"}</h3>
-        <div className="search-result"><strong>La Sîra et l’histoire islamique</strong><p>Chronologie de la révélation, Hégire, période mecquoise et médinoise. Les notices sont à lire avec leurs références bibliographiques.</p><a href="/sira">Ouvrir la rubrique Sîra ↗</a></div>
-        <div className="search-result"><strong>Patrimoine et lieux</strong><p>La Mecque, Médine, Jérusalem, Agadez et Al-Andalus.</p><a href="/lieux-merveilles">Ouvrir les fiches de lieux ↗</a></div>
+        {query.trim() && historicalResults.map((item, i) => <article className="search-result" key={i}><strong>{item.title}</strong><p>{item.text}</p><a href={item.href}>{arabic ? "افتح المرجع ←" : "Ouvrir la rubrique ↗"}</a></article>)}
+        {query.trim() && !searchResults.length && !filteredHadiths.length && !historicalResults.length && <p className="library-status">{arabic ? "لا توجد نتائج مطابقة." : "Aucun résultat documentaire trouvé pour cette recherche."}</p>}
         {error && <p className="library-error">{error}</p>}
         <p className="source-note">Recherche coranique via <a href="https://alquran.cloud/" target="_blank" rel="noreferrer">AlQuran Cloud</a>. Les résultats de cette version couvrent les hadiths intégrés et les fiches publiées sur le site.</p>
       </>}
