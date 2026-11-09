@@ -38,7 +38,7 @@ export default function SiteHeader() {
         </nav>
         <div className="nav-actions">
           <button className="language-button" onClick={toggleLanguage} aria-label="Changer la langue">{arabic ? "FR" : "عربي"}</button>
-          <button className="menu-button" onClick={() => setOpen(!open)} aria-label="Ouvrir le menu" aria-expanded={open}>☰</button>
+          <button className="menu-button" onClick={() => setOpen(!open)} aria-label="Ouvrir le menu" aria-expanded={open}>{open ? "Fermer" : "Menu"}</button>
         </div>
       </div>
     </header>
