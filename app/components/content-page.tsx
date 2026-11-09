@@ -63,7 +63,7 @@ const pages: Record<string, { title: string; arabic: string; intro: string; item
 };
 
 const photos = [
-  { title: "La Mosquée sacrée — La Mecque", place: "Makkah, Arabie saoudite", src: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Kaaba%2C_Masjid_Al_Haram%2C_Mecca.jpg", credit: "Shahin Olakara — CC BY 2.0", href: "https://commons.wikimedia.org/wiki/File:Kaaba,_Masjid_Al_Haram,_Mecca.jpg" },
+  { title: "La Mosquée sacrée — La Mecque", place: "Makkah, Arabie saoudite", src: "https://upload.wikimedia.org/wikipedia/commons/4/42/Kaaba%2C_Masjid_Al_Haram%2C_Mecca.jpg", credit: "Shahin Olakara — CC BY 2.0", href: "https://commons.wikimedia.org/wiki/File:Kaaba,_Masjid_Al_Haram,_Mecca.jpg" },
   { title: "La Mosquée du Prophète ﷺ", place: "Médine, Arabie saoudite", src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/MasjidNabawi.jpg/1280px-MasjidNabawi.jpg", credit: "Wurzelgnohm — CC0", href: "https://commons.wikimedia.org/wiki/File:MasjidNabawi.jpg" },
   { title: "La Mosquée Al-Aqsa", place: "Jérusalem", src: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Jerusalem-2013%282%29-Temple_Mount-Al-Aqsa_Mosque_%28east_exposure%29.jpg/1280px-Jerusalem-2013%282%29-Temple_Mount-Al-Aqsa_Mosque_%28east_exposure%29.jpg", credit: "Andrew Shiva / Godot13 — CC BY-SA 4.0", href: "https://commons.wikimedia.org/wiki/File:Jerusalem-2013(2)-Temple_Mount-Al-Aqsa_Mosque_(east_exposure).jpg" },
   { title: "La Grande Mosquée de Djenné", place: "Djenné, Mali", src: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Great_Mosque_of_Djenne_2.jpg", credit: "JM — CC BY 2.0", href: "https://commons.wikimedia.org/wiki/File:Great_Mosque_of_Djenne_2.jpg" }
