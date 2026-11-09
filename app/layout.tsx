@@ -7,8 +7,8 @@ export const metadata: Metadata = {
     default: "L’Islam à l’Origine — Revenir aux sources",
     template: "%s | L’Islam à l’Origine"
   },
-  description: "Une plateforme éducative pour découvrir le Coran, la Sunnah, la Sîra, les sciences islamiques et le patrimoine musulman.",
-  metadataBase: new URL("https://islam-a-lorigine.vercel.app"),
+  description: "Bibliothèque islamique bilingue : Coran, récitation audio, hadiths référencés, Sîra, sciences islamiques et patrimoine historique.",
+  metadataBase: new URL("https://islam-a-lorigine-bickri-service-agency.vercel.app"),
   openGraph: {
     title: "L’Islam à l’Origine",
     description: "Revenir aux sources, comprendre l’Islam, transmettre avec connaissance.",
