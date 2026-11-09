@@ -46,8 +46,8 @@ const pages: Record<string, { title: string; arabic: string; intro: string; item
       { title: "La Mecque — المسجد الحرام", text: "La Kaaba et la Mosquée sacrée, au cœur des rites du Hajj et de la Umrah." },
       { title: "Médine — المسجد النبوي", text: "La Mosquée du Prophète ﷺ et les lieux majeurs de la période médinoise." },
       { title: "Jérusalem — المسجد الأقصى", text: "La mosquée Al-Aqsa et le patrimoine historique de la vieille ville de Jérusalem." },
-      { title: "Djenné — Mali", text: "La Grande Mosquée de Djenné, remarquable exemple d’architecture en terre du Sahel." },
-      { title: "Al-Andalus", text: "Cordoue, Grenade et les traces architecturales et intellectuelles de l’histoire musulmane." },
+      { title: "Agadez — Niger", text: "La Grande Mosquée d’Agadez et son minaret en banco, emblème du patrimoine architectural sahélien." },
+      { title: "Al-Andalus — Espagne", text: "L’Alhambra de Grenade, Cordoue et les héritages artistiques, scientifiques et architecturaux de l’histoire musulmane en Andalousie." },
       { title: "Bibliothèques et manuscrits", text: "Les centres de savoir, les bibliothèques historiques et la transmission des sciences." }
     ]
   },
@@ -66,7 +66,8 @@ const photos = [
   { title: "La Mosquée sacrée — La Mecque", place: "Makkah, Arabie saoudite", src: "https://upload.wikimedia.org/wikipedia/commons/4/42/Kaaba%2C_Masjid_Al_Haram%2C_Mecca.jpg", credit: "Shahin Olakara — CC BY 2.0", href: "https://commons.wikimedia.org/wiki/File:Kaaba,_Masjid_Al_Haram,_Mecca.jpg" },
   { title: "La Mosquée du Prophète ﷺ", place: "Médine, Arabie saoudite", src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/MasjidNabawi.jpg/1280px-MasjidNabawi.jpg", credit: "Wurzelgnohm — CC0", href: "https://commons.wikimedia.org/wiki/File:MasjidNabawi.jpg" },
   { title: "La Mosquée Al-Aqsa", place: "Jérusalem", src: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Jerusalem-2013%282%29-Temple_Mount-Al-Aqsa_Mosque_%28east_exposure%29.jpg/1280px-Jerusalem-2013%282%29-Temple_Mount-Al-Aqsa_Mosque_%28east_exposure%29.jpg", credit: "Andrew Shiva / Godot13 — CC BY-SA 4.0", href: "https://commons.wikimedia.org/wiki/File:Jerusalem-2013(2)-Temple_Mount-Al-Aqsa_Mosque_(east_exposure).jpg" },
-  { title: "La Grande Mosquée de Djenné", place: "Djenné, Mali", src: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Great_Mosque_of_Djenne_2.jpg", credit: "JM — CC BY 2.0", href: "https://commons.wikimedia.org/wiki/File:Great_Mosque_of_Djenne_2.jpg" }
+  { title: "La Grande Mosquée d’Agadez", place: "Agadez, Niger", src: "https://commons.wikimedia.org/wiki/Special:FilePath/Grand_Mosque_Agadez.jpg?width=1280", credit: "Aminucrus — CC BY-SA 4.0", href: "https://commons.wikimedia.org/wiki/File:Grand_Mosque_Agadez.jpg" },
+  { title: "L’Alhambra — Al-Andalus", place: "Grenade, Andalousie, Espagne", src: "https://commons.wikimedia.org/wiki/Special:FilePath/Alhambra_courtyard.jpg?width=1280", credit: "Jan Kranendonk — CC BY-SA 4.0", href: "https://commons.wikimedia.org/wiki/File:Alhambra_courtyard.jpg" }
 ];
 
 export default function ContentPage({ slug }: { slug: string }) {
