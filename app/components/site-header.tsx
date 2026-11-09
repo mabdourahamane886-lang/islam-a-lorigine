@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 const links = [
   ["/", "Accueil", "الرئيسية"],
   ["/apprentissage", "Apprentissage", "التعلّم"],
-  ["/apprentissage", "Apprentissage", "التعلّم"],
   ["/coran", "Coran", "القرآن"],
   ["/hadiths", "Hadiths", "الحديث"],
   ["/fiqh", "Fiqh", "الفقه"],
