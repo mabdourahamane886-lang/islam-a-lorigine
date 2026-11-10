@@ -40,6 +40,9 @@ jobs:
       - name: Generate Android native project
         run: npx cap add android
 
+      - name: Generate native app branding
+        run: node scripts/create-android-branding.mjs
+
       - name: Sync Capacitor
         run: npx cap sync android
 
