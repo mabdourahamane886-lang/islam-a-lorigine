@@ -42,4 +42,12 @@ await writeFile(`${root}/mipmap-anydpi-v26/ic_launcher.xml`, adaptive);
 await writeFile(`${root}/mipmap-anydpi-v26/ic_launcher_round.xml`, adaptive);
 await writeFile(`${root}/drawable/splash.xml`, splash);
 await writeFile(`${root}/values/ic_launcher_colors.xml`, values);
-console.log("Android adaptive launcher icons and splash drawable generated.");
+const manifestPath = "android/app/src/main/AndroidManifest.xml";
+let manifest = await (await import("node:fs/promises")).readFile(manifestPath, "utf8");
+manifest = manifest.replace(/<application([^>]*)>/, (_match, attrs) => {
+  let next = attrs.replace(/\\s+android:icon="[^"]*"/, "").replace(/\\s+android:roundIcon="[^"]*"/, "");
+  next += ' android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher_round"';
+  return `<application${next}>`;
+});
+await writeFile(manifestPath, manifest);
+console.log("Android adaptive launcher icons, manifest references and splash drawable generated.");
