@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   },
   description: "Bibliothèque islamique bilingue : Coran, récitation audio, hadiths référencés, Sîra, sciences islamiques et patrimoine historique.",
   metadataBase: new URL("https://islam-a-lorigine.bickriservice-agency.workers.dev"),
+  icons: { icon: "/logo-mark.svg", shortcut: "/logo-mark.svg", apple: "/logo-mark.svg" },
   openGraph: {
     title: "L’Islam à l’Origine",
     description: "Revenir aux sources, comprendre l’Islam, transmettre avec connaissance.",
