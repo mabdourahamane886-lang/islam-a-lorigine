@@ -58,6 +58,10 @@ export default function ConnexionPage() {
           : { phone: identifier.trim(), password };
         const { data, error } = await supabase.auth.signInWithPassword(credentials);
         if (error) throw error;
+        if (data.user?.user_metadata?.app_scope !== "islam-a-lorigine") {
+          await supabase.auth.signOut();
+          throw new Error("Ce compte n’est pas associé à L’Islam à l’Origine. Créez un compte dédié à cette application.");
+        }
         if (data.user) {
           await supabase.from("islam_origine_app_profiles").upsert({
             id: data.user.id,
