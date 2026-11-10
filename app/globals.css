@@ -341,3 +341,5 @@ body{background:#fffefa;color:#252a33}
 .study-layout fieldset{min-width:0}
 @media(max-width:760px){.study-layout{grid-template-columns:1fr}.study-layout aside{position:static}.study-layout aside button{text-align:left!important}}
 [dir="rtl"] .study-layout button{text-align:right!important}
+
+.brand-mark-image{width:42px;height:42px;object-fit:contain;flex:0 0 42px}.footer-logo{display:block;width:min(220px,100%);height:auto;object-fit:contain;margin:0 0 12px}.footer-brand{display:block}
