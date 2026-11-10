@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import SiteHeader from "./components/site-header";
+import NativeAuthGate from "./components/native-auth-gate";
+import AuthStyles from "./components/auth-styles";
 
 export const metadata: Metadata = {
   title: {
@@ -29,9 +31,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="fr" dir="ltr">
       <body>
-        <SiteHeader />
-        {children}
-        <footer className="site-footer">
+        <AuthStyles />
+        <NativeAuthGate>
+          <SiteHeader />
+          {children}
+          <footer className="site-footer">
           <div className="container footer-inner">
             <div>
               <a className="brand footer-brand" href="/"> <span className="brand-mark">۞</span><span>L’Islam à l’Origine</span></a>
@@ -42,7 +46,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             </div>
             <small>© {new Date().getFullYear()} L’Islam à l’Origine. Les contenus doivent être vérifiés et référencés.</small>
           </div>
-        </footer>
+          </footer>
+        </NativeAuthGate>
       </body>
     </html>
   );
