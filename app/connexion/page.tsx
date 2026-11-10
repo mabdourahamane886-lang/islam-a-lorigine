@@ -80,7 +80,7 @@ export default function ConnexionPage() {
   return (
     <main className="auth-page">
       <section className="auth-card">
-        <Link href="/" className="auth-brand"><span>۞</span><b>L’Islam à l’Origine</b></Link>
+        <Link href="/" className="auth-brand"><img src="/logo-mark.svg" alt="" /><b>L’Islam à l’Origine</b></Link>
         <p className="auth-eyebrow">ESPACE PERSONNEL</p>
         <h1>{title}</h1>
         <p className="auth-intro">Accédez à votre espace d’apprentissage et retrouvez votre progression.</p>
