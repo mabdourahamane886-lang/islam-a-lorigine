@@ -1,0 +1,82 @@
+name: Android native build
+
+on:
+  push:
+    branches:
+      - feature/android-capacitor
+  pull_request:
+    branches:
+      - backup/pre-android-2026-11-10
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build static web application
+        run: npm run build:web
+
+      - name: Generate Android native project
+        run: npx cap add android
+
+      - name: Generate native app branding
+        run: node scripts/create-android-branding.mjs
+
+      - name: Sync Capacitor
+        run: npx cap sync android
+
+      - name: Build Debug APK
+        working-directory: android
+        run: ./gradlew --no-daemon assembleDebug
+
+      - name: Build Release AAB (unsigned)
+        working-directory: android
+        run: ./gradlew --no-daemon bundleRelease
+
+      - name: Archive generated Android project
+        run: tar -czf islam-a-lorigine-android-project.tar.gz android capacitor.config.ts
+
+      - name: Upload Android project
+        uses: actions/upload-artifact@v4
+        with:
+          name: islam-a-lorigine-android-native-project
+          path: islam-a-lorigine-android-project.tar.gz
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload test APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: islam-a-lorigine-debug-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload unsigned Google Play bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: islam-a-lorigine-release-aab-unsigned
+          path: android/app/build/outputs/bundle/release/app-release.aab
+          if-no-files-found: error
+          retention-days: 14
