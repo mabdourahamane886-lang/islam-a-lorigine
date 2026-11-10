@@ -22,26 +22,15 @@ const adaptive = `<?xml version="1.0" encoding="utf-8"?>
     <background android:drawable="@color/ic_launcher_background"/>
     <foreground android:drawable="@drawable/ic_launcher_foreground"/>
 </adaptive-icon>`;
-const splash = `<?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@color/splash_background"/>
-    <item android:gravity="center">
-        <inset android:drawable="@drawable/ic_launcher_foreground" android:inset="72dp"/>
-    </item>
-</layer-list>`;
-const values = `<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="ic_launcher_background">#063B2A</color>
-    <color name="splash_background">#063B2A</color>
-</resources>`;
-
 await writeFile(`${root}/drawable/ic_launcher_foreground.xml`, vector);
 await writeFile(`${root}/mipmap/ic_launcher.xml`, vector);
 await writeFile(`${root}/mipmap/ic_launcher_round.xml`, vector);
 await writeFile(`${root}/mipmap-anydpi-v26/ic_launcher.xml`, adaptive);
 await writeFile(`${root}/mipmap-anydpi-v26/ic_launcher_round.xml`, adaptive);
-await writeFile(`${root}/drawable/splash.xml`, splash);
-await writeFile(`${root}/values/ic_launcher_colors.xml`, values);
+const bgPath = `${root}/values/ic_launcher_background.xml`;
+let bg = await (await import("node:fs/promises")).readFile(bgPath, "utf8");
+bg = bg.replace(/(<color\\s+name="ic_launcher_background">)[^<]+(<\\/color>)/, "$1#063B2A$2");
+await writeFile(bgPath, bg);
 const manifestPath = "android/app/src/main/AndroidManifest.xml";
 let manifest = await (await import("node:fs/promises")).readFile(manifestPath, "utf8");
 manifest = manifest.replace(/<application([^>]*)>/, (_match, attrs) => {
@@ -50,4 +39,4 @@ manifest = manifest.replace(/<application([^>]*)>/, (_match, attrs) => {
   return `<application${next}>`;
 });
 await writeFile(manifestPath, manifest);
-console.log("Android adaptive launcher icons, manifest references and splash drawable generated.");
+console.log("Android adaptive launcher icons and manifest references generated.");
