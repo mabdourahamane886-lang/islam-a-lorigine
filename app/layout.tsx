@@ -38,7 +38,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <footer className="site-footer">
           <div className="container footer-inner">
             <div>
-              <a className="brand footer-brand" href="/"> <span className="brand-mark">۞</span><span>L’Islam à l’Origine</span></a>
+              <a className="brand footer-brand" href="/"> <img className="brand-logo footer-logo" src="/logo-islam-a-lorigine.svg" alt="L’Islam à l’Origine" /></a>
               <p>Revenir aux sources, comprendre l’Islam, transmettre avec connaissance.</p>
             </div>
             <div className="footer-links">
